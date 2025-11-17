@@ -1,4 +1,4 @@
-# 🥗 Anti Food Waste App  
+#  Anti Food Waste App  
 **Web Technologies Project — ASE 2025–2026**
 
 A community-driven web application that helps users reduce food waste by sharing items that are close to expiring.  
@@ -6,7 +6,7 @@ If you have something in your fridge that you won’t use — share it instead o
 
 ---
 
-## 📌 About  
+##  About  
 This project encourages users to become more aware of food waste through a fun, social, and community-based approach.
 
 The system allows users to:
@@ -26,24 +26,24 @@ This application is developed for the **Web Technologies** course and follows th
 
 ---
 
-## 🚀 Features
+##  Features
 
-### ✔ Fridge Inventory
+###  Fridge Inventory
 - Add/edit/delete food items
 - Products organized into categories
 - Automatic category suggestions via OpenFoodFacts
 
-### ✔ Expiration Tracking
+###  Expiration Tracking
 - Daily cron job checks expiration dates
 - Notifications for items expiring within 48h
 - Products can be marked as *available for sharing*
 
-### ✔ Community Sharing
+###  Community Sharing
 - Users can view available items
 - Any user can *claim* an item
 - The owner confirms or rejects the claim
 
-### ✔ Friend Groups
+###  Friend Groups
 - Create groups of friends
 - Add preference tags (vegetarian, vegan, carnivore, etc.)
 - Share items only with selected groups
@@ -55,7 +55,7 @@ This application is developed for the **Web Technologies** course and follows th
 
 ---
 
-## 🧱 Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React.js (SPA)
@@ -135,7 +135,7 @@ Used for product data and category suggestions.
 
 ---
 
-## 🔌 API Endpoints (Initial Plan)
+##  API Endpoints (Initial Plan)
 ### **Auth**
 -  POST /api/auth/register
 -  POST /api/auth/login
@@ -156,21 +156,21 @@ Used for product data and category suggestions.
 
 ---
 
-## 🗓️ Project Timeline
+##  Project Timeline
 
-### 📍 Stage 1 — Nov 16  
+###  Stage 1 — Nov 16  
 - Specifications & project plan  
 - Initial repository setup  
 - README + basic structure  
 
-### 📍 Stage 2 — Dec 6  
+###  Stage 2 — Dec 6  
 - Functional REST backend  
 - Prisma schema + database migrations  
 - CRUD operations  
 - External API integration  
 - Run instructions  
 
-### 📍 Final Stage — Last Seminar  
+###  Final Stage — Last Seminar  
 - Complete React frontend  
 - Full integration with backend  
 - Claims system  
@@ -179,7 +179,7 @@ Used for product data and category suggestions.
 
 ---
 
-## 📘 To-Do Roadmap
+##  To-Do Roadmap
 
 - [ ] Initialize backend (Node + Express)
 - [ ] Configure Prisma + database schema
@@ -195,7 +195,7 @@ Used for product data and category suggestions.
 
 ---
 
-## 📝 Notes  
+##  Notes  
 This README will be updated throughout development.  
 All progress will be documented using incremental Git commits.
 
