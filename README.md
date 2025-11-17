@@ -48,7 +48,7 @@ This application is developed for the **Web Technologies** course and follows th
 - Add preference tags (vegetarian, vegan, carnivore, etc.)
 - Share items only with selected groups
 
-### ✔ Social Media Integration
+###  Social Media Integration
 - Share available items on:
   - Instagram
   - Facebook
@@ -176,22 +176,6 @@ Used for product data and category suggestions.
 - Claims system  
 - Deployment  
 - Live demo  
-
----
-
-##  To-Do Roadmap
-
-- [ ] Initialize backend (Node + Express)
-- [ ] Configure Prisma + database schema
-- [ ] Implement REST API endpoints
-- [ ] Add OpenFoodFacts integration
-- [ ] Set up cron job notifications
-- [ ] Initialize frontend (React + Vite)
-- [ ] Create main pages and routes
-- [ ] Implement sharing & claiming logic
-- [ ] Add social media integration
-- [ ] Deploy backend & frontend
-- [ ] Final testing + polish
 
 ---
 
