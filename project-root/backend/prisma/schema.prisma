@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  products     Product[]
+  groups       FriendGroup[]
+  claims       Claim[]
+  groupMembers GroupMember[]
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  label    String
+  products Product[]
+}
+
+model Product {
+  id             Int           @id @default(autoincrement())
+  name           String
+  expirationDate DateTime
+  status         ProductStatus @default(FRESH)
+  ownerId        Int
+  owner          User          @relation(fields: [ownerId], references: [id])
+  categoryId     Int?
+  available Boolean @default(false)
+  category       Category?     @relation(fields: [categoryId], references: [id])
+  claims         Claim[]
+}
+
+model FriendGroup {
+  id       Int          @id @default(autoincrement())
+  name     String
+  desc     String?
+  ownerId  Int
+  owner    User         @relation(fields: [ownerId], references: [id])
+  members  GroupMember[]
+}
+
+model GroupMember {
+  id      Int          @id @default(autoincrement())
+  groupId Int
+  userId  Int
+  tag     String
+
+  group   FriendGroup  @relation(fields: [groupId], references: [id])
+  user    User         @relation(fields: [userId], references: [id])
+}
+
+model Claim {
+  id         Int          @id @default(autoincrement())
+  productId  Int
+  claimerId  Int
+  timestamp  DateTime     @default(now())
+  status     ClaimStatus  @default(PENDING)
+  product    Product      @relation(fields: [productId], references: [id])
+  claimer    User         @relation(fields: [claimerId], references: [id])
+}
+
+enum ClaimStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+enum ProductStatus {
+  FRESH
+  EXPIRING_SOON
+  EXPIRED
+  AVAILABLE
+  CLAIMED
+}
