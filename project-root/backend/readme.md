@@ -2,7 +2,7 @@
 
 It provides a fully functional **Node.js + Express API**, connected to a **PostgreSQL** database using **Prisma ORM**, and includes external data integration via **OpenFoodFacts**.
 
-### ⚙️ Setup Instructions
+###  Setup Instructions
 
 1.  Navigate to the backend directory
     ```bash
@@ -21,7 +21,7 @@ It provides a fully functional **Node.js + Express API**, connected to a **Postg
     ```
     Replace `YOUR_PASSWORD` and `YOUR_HOST` with your PostgreSQL configuration.
 
-### 🗄️ Database Initialization (Prisma)
+###  Database Initialization (Prisma)
 
 * Run database migrations
     ```bash
@@ -33,7 +33,7 @@ It provides a fully functional **Node.js + Express API**, connected to a **Postg
     npx prisma studio
     ```
 
-### ▶️ Running the Server
+### ▶Running the Server
 
 * Development mode (auto reload)
     ```bash
@@ -46,7 +46,7 @@ It provides a fully functional **Node.js + Express API**, connected to a **Postg
     ```
     Server will run on: **http://localhost:5000**
 
-### 🗺️ API Endpoints (Summary)
+###  API Endpoints (Summary)
 
 #### Products
 * `GET /api/products`
@@ -60,7 +60,7 @@ It provides a fully functional **Node.js + Express API**, connected to a **Postg
 * `GET /api/food/:barcode`
 * `POST /api/products/from-barcode`
 
-### 📦 Technologies Used
+###  Technologies Used
 
 * **Node.js**
 * **Express.js**
