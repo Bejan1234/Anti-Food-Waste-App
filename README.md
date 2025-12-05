@@ -77,10 +77,6 @@ This application is developed for the **Web Technologies** course and follows th
 - **OpenFoodFacts** (free and open source)  
 Used for product data and category suggestions.
 
-### Deployment
-- Frontend: Vercel / Netlify  
-- Backend: Render / Railway / Azure for Students  
-
 ---
 
 ## 🗄️ Database Structure (Draft)

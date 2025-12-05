@@ -33,7 +33,7 @@ It provides a fully functional **Node.js + Express API**, connected to a **Postg
     npx prisma studio
     ```
 
-### ▶Running the Server
+### Running the Server
 
 * Development mode (auto reload)
     ```bash
