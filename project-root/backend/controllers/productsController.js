@@ -1,6 +1,18 @@
 import { PrismaClient } from "@prisma/client";
-
+//conectare BD
 const prisma = new PrismaClient();
+
+async function connectDB() {
+  try {
+    await prisma.$connect();
+    console.log("✅ Connected to PostgreSQL database");
+  } catch (err) {
+    console.error("Failed to connect:", err);
+    process.exit(1);
+  }
+}
+
+connectDB();
 
 // Returnează toate produsele din baza de date, inclusiv categoria și proprietarul
 export async function getAllProducts(req, res) {
