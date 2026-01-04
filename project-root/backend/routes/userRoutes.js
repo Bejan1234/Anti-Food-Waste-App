@@ -1,0 +1,32 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../database/User');
+const auth = require('../services/authentication');
+
+// get profile data
+router.get('/profile', auth, async (req, res) => {
+    try {
+        const user = await User.findByPk(req.user.id, {
+            attributes: ['username', 'email', 'dietaryTags', 'bio', 'phone']
+        });
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// update profile data
+router.post('/profile', auth, async (req, res) => {
+    try {
+        const { bio, dietaryTags, phone } = req.body;
+        await User.update(
+            { bio, dietaryTags, phone },
+            { where: { id: req.user.id } }
+        );
+        res.json({ message: 'Profile updated successfully' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+module.exports = router;
