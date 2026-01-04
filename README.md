@@ -1,186 +1,171 @@
-#  Anti Food Waste App  
-**Web Technologies Project — ASE 2025–2026**
+# Anti Food Waste App
 
-A community-driven web application that helps users reduce food waste by sharing items that are close to expiring.  
-If you have something in your fridge that you won’t use — share it instead of throwing it away.
+Web Technologies Project — ASE 2025–2026
 
----
+A community-driven web application that helps users reduce food waste by sharing items that are close to expiring.
 
-##  About  
-This project encourages users to become more aware of food waste through a fun, social, and community-based approach.
-
-The system allows users to:
-- Manage products in their fridge
-- Track expiration dates
-- Mark items as available for sharing
-- Allow friends to claim items
-- Organize friends into tagged groups
-- Share items on social media platforms
-
-This application is developed for the **Web Technologies** course and follows the required stack:
-- SPA frontend using **React**
-- REST backend with **Node.js + Express**
-- Relational database with **Prisma ORM**
-- External API integration (**OpenFoodFacts**)
-- Full Git versioning & deployment on a cloud provider
+If you have something in your fridge that you won't use — share it instead of throwing it away.
 
 ---
 
-##  Features
+## Key Features
 
-###  Fridge Inventory
-- Add/edit/delete food items
-- Products organized into categories
-- Automatic category suggestions via OpenFoodFacts
+### My Fridge
+- **Smart Inventory Management**: Track items with expiration dates and automated status alerts
+- **Color-Coded Status**: Visual indicators for available items, expiring soon, and expired products
+- **Quick Add with Barcode**: Scan barcodes using OpenFoodFacts API for instant product entry
+- **Expired Product Protection**: Can't share expired items—your community's safety comes first
 
-###  Expiration Tracking
-- Daily cron job checks expiration dates
-- Notifications for items expiring within 48h
-- Products can be marked as *available for sharing*
+### Community Market
+- **Discover Available Products**: Browse items shared by other community members
+- **Smart Claiming**: One-click to claim products available in your area
+- **Direct Communication**: WhatsApp integration for seamless pickup coordination
+- **Social Sharing**: Share items to Facebook, WhatsApp, and Twitter
 
-###  Community Sharing
-- Users can view available items
-- Any user can *claim* an item
-- The owner confirms or rejects the claim
+### Community Circles
+- **Create Private Groups**: Form circles with friends, family, or neighborhood members
+- **Admin Controls**: Manage group members with kick functionality
+- **Shared Preferences**: Track dietary preferences (Halal, Kosher, Vegetarian, etc.)
+- **Smart Visibility**: Share only within your trusted circles
 
-###  Friend Groups
-- Create groups of friends
-- Add preference tags (vegetarian, vegan, carnivore, etc.)
-- Share items only with selected groups
-
-###  Social Media Integration
-- Share available items on:
-  - Instagram
-  - Facebook
+### User Experience
+- **Glassmorphism Design**: Modern, sleek interface with stunning visual effects
+- **Full Dark Mode**: Premium dark theme with persistent toggle
+- **Responsive Layout**: Works seamlessly on desktop and mobile devices
+- **Real-time Updates**: Instant notifications for claims and group invitations
 
 ---
 
-##  Tech Stack
+## Quick Start
+
+### Prerequisites
+- **Node.js** (v18+)
+- **npm** or **yarn**
+- **PostgreSQL** database (or Supabase cloud database)
+
+### Installation
+
+#### Backend Setup
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file in the backend folder:
+```env
+DATABASE_URL=your_postgresql_connection_string
+JWT_SECRET=your_secret_key
+NODE_ENV=development
+```
+
+Start the server:
+```bash
+node server.js
+```
+
+#### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+---
+
+## Tech Stack
 
 ### Frontend
-- React.js (SPA)
-- React Router
-- Context API / Zustand
-- Material UI or TailwindCSS
+- **React.js** with Vite for lightning-fast development
+- **Tailwind CSS** for responsive, utility-first styling
+- **Lucide React** for modern, beautiful icons
+- **Axios** for API communication with JWT authentication
 
 ### Backend
-- Node.js  
-- Express.js  
-- Prisma ORM  
-- Cron jobs for expiration notifications  
-- Axios for API consumption  
+- **Node.js** with Express.js web framework
+- **Sequelize ORM** for database management
+- **JWT (jsonwebtoken)** for secure authentication
+- **bcryptjs** for password hashing
 
 ### Database
-- PostgreSQL 
+- **PostgreSQL** via Supabase cloud database
+- Fully normalized schema with relationships
 
-### External API
-- **OpenFoodFacts** (free and open source)  
-Used for product data and category suggestions.
-
----
-
-## 🗄️ Database Structure (Draft)
-
-### **Users**
-| Field          | Type         |
-|----------------|--------------|
-| id             | int (PK)     |
-| name           | string       |
-| email          | string       |
-| passwordHash   | string       |
-
-### **Products**
-| Field          | Type         |
-|----------------|--------------|
-| id             | int (PK)     |
-| name           | string       |
-| categoryId     | int (FK)     |
-| ownerId        | int (FK)     |
-| expirationDate | date         |
-| status         | enum         |
-
-### **Categories**
-| Field  | Type     |
-|--------|----------|
-| id     | int (PK) |
-| label  | string   |
-
-### **FriendGroups**
-| Field     | Type     |
-|-----------|----------|
-| id        | int (PK) |
-| ownerId   | int (FK) |
-| name      | string   |
-| desc      | string   |
-
-### **GroupMembers**
-| Field    | Type      |
-|----------|-----------|
-| groupId  | int (FK)  |
-| userId   | int (FK)  |
-| tag      | string    |
-
-### **Claims**
-| Field      | Type      |
-|------------|-----------|
-| id         | int (PK)  |
-| productId  | int (FK)  |
-| claimerId  | int (FK)  |
-| timestamp  | datetime  |
-| status     | enum      |
+### Deployment
+- **Frontend**: Ready for Vercel
+- **Backend**: Ready for Render or Heroku
 
 ---
 
-##  API Endpoints (Initial Plan)
-### **Auth**
--  POST /api/auth/register
--  POST /api/auth/login
+## API Endpoints
 
-### **Products**
-- GET /api/products – get my products
-- POST /api/products – add product
-- PUT /api/products/:id – update product
-- DELETE /api/products/:id – delete product
-- PATCH /api/products/:id/available – mark item available
-- POST /api/products/:id/claim – claim item
+### Authentication
+```
+POST   /api/auth/register      - Create account with email & password
+POST   /api/auth/login         - Login and receive JWT token
+```
 
+### Product Management
+```
+GET    /api/products           - Get your fridge items
+GET    /api/products/explore   - Browse community marketplace
+POST   /api/products           - Add new product manually
+GET    /api/products/scan/:id  - Fetch barcode data from external API
+PATCH  /api/products/:id       - Update product details
+POST   /api/products/:id/claim - Claim a product from community
+DELETE /api/products/:id       - Remove product from your fridge
+```
 
-### **Groups & Friends**
-- GET /api/groups
-- POST /api/groups
-- POST /api/groups/:id/members
+### Groups & Social
+```
+GET    /api/groups             - List your community circles
+POST   /api/groups             - Create new group
+DELETE /api/groups/:id         - Delete group (admin only)
+GET    /api/groups/:id/members - View group members
+POST   /api/groups/:id/invite  - Invite user to group
+DELETE /api/groups/:id/members/:userId - Remove member (admin only)
+```
 
----
-
-##  Project Timeline
-
-###  Stage 1 — Nov 16  
-- Specifications & project plan  
-- Initial repository setup  
-- README + basic structure  
-
-###  Stage 2 — Dec 6  
-- Functional REST backend  
-- Prisma schema + database migrations  
-- CRUD operations  
-- External API integration  
-- Run instructions  
-
-###  Final Stage — Last Seminar  
-- Complete React frontend  
-- Full integration with backend  
-- Claims system  
-- Deployment  
-- Live demo  
+### User Profile
+```
+GET    /api/users/profile      - Fetch profile data
+POST   /api/users/profile      - Update dietary preferences & contact info
+```
 
 ---
 
-##  Notes  
-This README will be updated throughout development.  
-All progress will be documented using incremental Git commits.
+## Project Structure
+
+```
+backend/
+├── configuration/              # Database configuration
+├── database/                   # Models (User, Product, Group schemas)
+├── services/                   # Authentication middleware
+├── routes/                     # API endpoints (controllers)
+└── server.js                   # Entry point
+
+frontend/
+├── src/
+│   ├── sections/              # Page components (Login, Dashboard, Groups, etc.)
+│   ├── components/            # Reusable UI components
+│   ├── tools/                 # Utilities & API client
+│   ├── assets/                # Images & static files
+│   └── main.jsx               # App entry point
+└── vite.config.js
+```
 
 ---
 
+## How It Works
+
+1. **Sign Up**: Create an account with your dietary preferences
+2. **Add Items**: Track food in your fridge with expiration dates
+3. **Share or Explore**: Share items with your circles or browse the community market
+4. **Connect**: Use WhatsApp to coordinate pickup with other users
+5. **Build Community**: Create groups to share with trusted people
+
+---
 
 
 
