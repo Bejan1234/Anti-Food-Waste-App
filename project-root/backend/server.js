@@ -30,7 +30,7 @@ app.use('/api/users', userRoutes);
 
 // base route
 app.get('/', (req, res) => {
-    res.send('food waste app backend works!');
+    res.send('waste food app backend works!');
 });
 
 // start server
