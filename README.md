@@ -36,6 +36,15 @@ If you have something in your fridge that you won't use — share it instead of 
 
 ---
 
+## Deployment
+
+✅ **Application is live!**
+
+- **Frontend**: https://anti-food-waste-app.vercel.app
+- **Backend API**: https://anti-food-waste-app-12.onrender.com
+
+---
+
 ## Quick Start
 
 ### Prerequisites
