@@ -37,17 +37,17 @@ app.get('/', (req, res) => {
 const startServer = async () => {
     try {
         await sequelize.authenticate();
-        console.log('✅ Database connected successfully.');
+        console.log(' Database connected successfully.');
 
         // keeps models in sync with db structure
         await sequelize.sync({ alter: true });
-        console.log('✅ Data successfully synchronized');
+        console.log(' Data successfully synchronized');
 
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
         });
     } catch (error) {
-        console.error('❌ Unable to connect to the database:', error);
+        console.error(' Unable to connect to the database:', error);
     }
 };
 
